@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Piping Layout Program</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+      integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!--NAVBAR SECTION-->
+    <nav class="navbar">
+      <div class="navbar__container">
+        <div class="navbar__toggle" id="mobile-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <ul class="navbar__menu">
+          <li class="navbar__btn">
+            <a href="{{ url_for('planta') }}" class="button__2" id="planta">
+              Planta
+            </a>
+          </li>
+          <li class="navbar__btn">
+            <a href="{{ url_for('piperack') }}" class="button__2"> Piperack </a>
+          </li>
+          <li class="navbar__btn">
+            <a href="{{ url_for('equipos') }}" class="button__1"> Equipos </a>
+          </li>
+          <li class="navbar__btn">
+            <a href="{{ url_for('lineas') }}" class="button__4"> Lineas </a>
+          </li>
+          <li class="navbar__btn">
+            <a href="{{ url_for('resultados') }}" class="button__5">
+              Resultados
+            </a>
+          </li>
+          <a href="{{ url_for('index') }}" id="navbar__logo"
+            >MAJOR PIPING LAYOUT</a
+          >
+        </ul>
+      </div>
+    </nav>
+    <div class="services">
+      <p>Ingrese la información de los equipos o seleccionelos :</p>
+
+      <div class="services__container">
+        <div class="services__cont">
+          <h2>Equipos</h2>
+          &ensp;
+          <p>
+            Nombre del equipo
+            <label for="nbrEquipo">:</label>
+            <input
+              type="text"
+              id="nbrEquipo"
+              name="nbrEquipo"
+              required
+              minlength="4"
+              maxlength="15"
+              size="10"
+            />
+          </p>
+          <p>
+            TAG
+            <label for="TAGequipo">:</label>
+            <input
+              type="text"
+              id="TAGquipo"
+              name="TAGequipo"
+              required
+              minlength="4"
+              maxlength="15"
+              size="10"
+            />
+          </p>
+          <p>
+            Coordenadas [mm] :
+            <label for="x_eq"> x </label>
+            <input type="number" id="x_eq" name="x_eq" min="1" max="8" />
+            <label for="y_eq"> y </label>
+            <input type="number" id="y_eq" name="y_eq" min="1" max="8" />
+            <label for="z_eq"> z </label>
+            <input type="number" id="z_eq" name="z_eq" min="1" max="8" />
+          </p>
+          <p>
+            Tipo de equipo
+            <label for="TipoEquipo">:</label>
+            <select name="tipoEquipo">
+              <option value="servicio">Servicio</option>
+              <option value="proceso">Proceso</option>
+              <option value="otro">Otro</option>
+            </select>
+          </p>
+          <center>
+            <button class="button_Guardar_equipo">Guardar</button>
+          </center>
+          &emsp;
+          <center>
+            <table border="1" width="100%">
+              <caption>
+                Tabla de los equipos
+              </caption>
+              <thead>
+                <tr>
+                  <th>N</th>
+                  <th>TAG</th>
+                  <th>X</th>
+                  <th>Y</th>
+                  <th>Z</th>
+                  <th>TIPO</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr align="center">
+                  <td>.</td>
+                  <td>.</td>
+                  <td>.</td>
+                  <td>.</td>
+                  <td>.</td>
+                  <td>.</td>
+                </tr>
+                <tr align="center">
+                  <td>.</td>
+                  <td>.</td>
+                  <td>.</td>
+                  <td>.</td>
+                  <td>.</td>
+                  <td>.</td>
+                </tr>
+                <tr align="center">
+                  <td>.</td>
+                  <td>.</td>
+                  <td>.</td>
+                  <td>.</td>
+                  <td>.</td>
+                  <td>.</td>
+                </tr>
+                <tr align="center">
+                  <td>.</td>
+                  <td>.</td>
+                  <td>.</td>
+                  <td>.</td>
+                  <td>.</td>
+                  <td>.</td>
+                </tr>
+              </tbody>
+            </table>
+          </center>
+        </div>
+      </div>
+    </div>
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='script.js') }}"
+    ></script>
+  </body>
+</html>

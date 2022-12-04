@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Piping Layout Program</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+      integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!--NAVBAR SECTION-->
+    <nav class="navbar">
+      <div class="navbar__container">
+        <div class="navbar__toggle" id="mobile-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <ul class="navbar__menu">
+          <li class="navbar__btn">
+            <a href="{{ url_for('planta') }}" class="button__2" id="planta">
+              Planta
+            </a>
+          </li>
+          <li class="navbar__btn">
+            <a href="{{ url_for('piperack') }}" class="button__1"> Piperack </a>
+          </li>
+          <li class="navbar__btn">
+            <a href="{{ url_for('equipos') }}" class="button__3"> Equipos </a>
+          </li>
+          <li class="navbar__btn">
+            <a href="{{ url_for('lineas') }}" class="button__4"> Lineas </a>
+          </li>
+          <li class="navbar__btn">
+            <a href="{{ url_for('resultados') }}" class="button__5">
+              Resultados
+            </a>
+          </li>
+          <a href="{{ url_for('index') }}" id="navbar__logo"
+            >MAJOR PIPING LAYOUT</a
+          >
+        </ul>
+      </div>
+    </nav>
+    <div class="services">
+      <div class="services__container">
+        <div class="services__cont">
+          <p><center>Ingrese información del Piperack</center></p>
+
+          {% block content %}
+          <form action="" method="POST">
+            <p>
+              {{form.ancho.label}}<br />
+              {{form.ancho(size=30)}}
+            </p>
+            <p>
+              {{form.largo.label}}<br />
+              {{form.largo(size=30)}}
+            </p>
+
+            <p>
+              {{form.anchoP.label}}<br />
+              {{form.anchoP(size=30)}}
+            </p>
+            <p>
+              {{form.largoP.label}}<br />
+              {{form.largoP(size=30)}}
+            </p>
+            <p>
+              {{form.altoP.label}}<br />
+              {{form.altoP(size=30)}}
+            </p>
+            <p>
+              {{form.seccionesP.label}}<br />
+              {{form.seccionesP(size=30)}}
+            </p>
+            <p>{{form.submit2()}}</p>
+          </form>
+          {% if form.is_submitted() %}
+          <p>
+            El ancho es: {{anchoP}}, largo es: {{largoP}} y alto es: {{altoP}}
+          </p>
+          <br />
+          {% endif %}
+        </div>
+        <div class="services__cont">
+          {% if plot_urlpr %}
+          <p>Visualizacion 2D</p>
+          <img
+            src="{{plot_urlpr}}"
+            alt="Imagen no se puede ver"
+            width="400"
+            height="400"
+          />
+          {% endif %}
+          <p></p>
+          {% if plot3d_urlpr %}
+          <p>Visualizacion 3D</p>
+          <img
+            src="{{plot3d_urlpr}}"
+            alt="Imagen no se puede ver"
+            width="400"
+            height="400"
+          />
+          {% endif %}
+        </div>
+        {% endblock %}
+      </div>
+    </div>
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='script.js') }}"
+    ></script>
+  </body>
+</html>

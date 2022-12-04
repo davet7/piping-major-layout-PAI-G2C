@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piping Layout Program</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" 
+    integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!--NAVBAR SECTION-->
+    <nav class="navbar">
+        <div class="navbar__container">
+          <div class="navbar__toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+          <ul class="navbar__menu">
+            <li class="navbar__btn">
+              <a href="{{ url_for('planta') }}" class="button__2" id="planta">
+                Planta
+              </a>
+            </li>
+            <li class="navbar__btn">
+              <a href="{{ url_for('piperack') }}" class="button__3"> Piperack </a>
+            </li>
+            <li class="navbar__btn">
+              <a href="{{ url_for('equipos') }}" class="button__3"> Equipos </a>
+            </li>
+            <li class="navbar__btn">
+              <a href="{{ url_for('lineas') }}" class="button__1"> Lineas </a>
+            </li>
+            <li class="navbar__btn">
+              <a href="{{ url_for('resultados') }}" class="button__5">
+                Resultados
+              </a>
+            </li>
+            <a href="{{ url_for('index') }}" id="navbar__logo"
+              >MAJOR PIPING LAYOUT</a
+            >
+          </ul>
+        </div>
+      </nav>
+            <div class="services">
+            <p>Ingrese la información de las lineas   :  </p>
+            <div class="services__container">
+                <div class="services__cont">
+                
+                {% block content %}
+                <form action="" method="POST">
+                    <p>
+                    {{form.numLinea.label}}<br />
+                    {{form.numLinea(size=30)}}
+                    </p>
+                    <p>
+                    {{form.tagLinea.label}}<br />
+                    {{form.tagLinea(size=30)}}
+                    </p>
+                    <p>
+                    {{form.equipo1.label}}<br />
+                    {{form.equipo1(size=30)}}
+                    </p>
+                    <p>
+                    {{form.diametro.label}}<br />
+                    {{form.diametro(size=30)}}
+                    </p>
+                    <p>{{form.submit4()}}</p>
+                </form>
+                {% endblock %}
+          
+            <form>
+                Número:
+                <input id="numero" type="number"/>
+                <br/><br/> TAG:
+                <input id="TAG" type="text"/>
+                <br/><br/> Equipo 1:
+                <input id="equipo1" type="text"/>
+                <br/><br/> Equipo 2:
+                <input id="equipo2" type="text"/>
+                <br/><br/> Diámetro:
+                <input id="diametro" type="number"/>
+                <br/><br/>
+                <center><input type="button" class="button_Guardar_linea" value="Guardar" onclick="matrizdelinea()"/></center><br/>
+            </form>
+                <button id="refresh">Recargar</button>
+            <br />
+                    <center><table border="1" width="100%" id:"Tablalineas"> 
+                        <caption>Tabla de las lineas</caption>
+                        <thead>
+                            <tr><th>N</th><th>TAG</th><th>Equipo 1</th><th>Equipo 2</th><th>Diametro</th></tr>
+                        </thead>
+                        <tbody>
+                        <tr align="center">
+                            <td><div id="matrizdelinea"><label id="matriz">numero linea</label></div></td>
+                            <td><div id="matrizdelinea"><label id="TAGdelinea">TAG</label></div></td>
+                            <td><div id="matrizdelinea"><label id="equipo1delinea">equipo 1</label></td>
+                            <td><div id="matrizdelinea"><label id="equipo2delinea">equipo 2</label></td>
+                            <td><div id="matrizdelinea"><label id="diametrodelinea">diámetro</label></td></tr>
+                        </tbody>
+                    </table></center>
+
+                    </div>
+                    <div class="services__cont">
+                    </div>
+                
+                              
+                </div>
+            </div>
+            <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='script.js') }}"
+    ></script>
+</body>
+</html>
